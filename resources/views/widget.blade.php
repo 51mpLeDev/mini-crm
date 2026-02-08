@@ -20,11 +20,11 @@
 <div class="container py-3">
     <form id="ticket-form">
         <div class="mb-3">
-            <input name="name" class="form-control" placeholder="Имя">
+            <input name="name" class="form-control" required placeholder="Имя">
         </div>
 
         <div class="mb-3">
-            <input name="email" class="form-control" placeholder="Email">
+            <input name="email" class="form-control" required placeholder="Email">
         </div>
 
         <div class="mb-3">

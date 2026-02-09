@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WidgetController;
 use Illuminate\Support\Facades\Route;
@@ -21,5 +22,12 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/widget', WidgetController::class);
 
+Route::middleware(['auth', 'role:manager'])
+    ->prefix('admin')
+    ->group(function () {
+        Route::get('/tickets', [TicketController::class, 'index'])->name('admin.tickets.index');
+        Route::get('/tickets/{ticket}', [TicketController::class, 'show'])->name('admin.tickets.show');
+        Route::patch('/tickets/{ticket}', [TicketController::class, 'update'])->name('admin.tickets.update');
+    });
 
 require __DIR__.'/auth.php';

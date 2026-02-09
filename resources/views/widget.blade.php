@@ -35,6 +35,10 @@
             <textarea name="message" class="form-control" placeholder="Текст" rows="4" required></textarea>
         </div>
 
+        <div class="mb-3">
+            <input type="file" name="files[]" class="form-control" multiple>
+        </div>
+
         <button type="submit" class="btn btn-primary w-100">
             Отправить
         </button>

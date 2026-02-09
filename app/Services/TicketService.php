@@ -35,6 +35,16 @@ class TicketService
             ]);
         }
 
-        return $this->repository->createTicket($customer, $data);
+        $ticket = $this->repository->createTicket($customer, $data);
+
+        if (!empty($data['files'])) {
+            foreach ($data['files'] as $file) {
+                $ticket
+                    ->addMedia($file)
+                    ->toMediaCollection('attachments');
+            }
+        }
+
+        return $ticket;
     }
 }
